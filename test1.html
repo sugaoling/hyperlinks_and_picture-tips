@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+    <meta charset="UTF-8">
+    <title>测试练习：val()</title>
+    <script src="js/jquery.min.js"></script>
+    <style type="text/css">
+       /* *{
+            margin: 0;
+            border: 0;
+        }*/
+        .content{
+            width: 200px;
+            text-align: center;
+            border: #cccccc solid 1px;
+            padding: 10px;
+            line-height: 24px;
+        }
+       .content2{
+            width: 200px;
+            /*text-align: center;*/
+            border: #cccccc solid 1px;
+            padding: 10px;
+            line-height: 24px;
+           margin-top: 10px ;
+        }
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            $("#address").focus(function () {
+                var txt_value=$(this).val();
+                if(txt_value=="请输入邮箱地址"){
+                    $(this).val("");
+                }
+            });
+            $("#address").blur(function () {
+                var txt_value=$(this).val();
+                if(txt_value==""){
+                    $(this).val("请输入邮箱地址");
+                }
+            });
+            /*$("#password").focus(function () {
+                var txt_value=$(this).val();
+                if(txt_value=="请输入邮箱密码"){
+                    $(this).val("");
+                }
+            });
+            $("#password").blur(function () {
+                var txt_value=$(this).val();
+                if(txt_value==""){
+                    $(this).val("请输入邮箱密码");
+                }
+            });*/
+            /*使用表单元素的defaultValue属性*/
+            $("#password").focus(function () {
+                var txt_value=$(this).val();
+                if(txt_value==this.defaultValue){
+                    $(this).val("");
+                }
+            });
+            $("#password").blur(function () {
+                var txt_value=$(this).val();
+                if(txt_value==""){
+                    $(this).val(this.defaultValue);
+                }
+            });
+            /*$("#single").val("选择2号");*/
+            $("#single option:eq(1)").attr("selected",true);
+            $("#multiple").val(["选择2号","选择3号"]);
+            $(":checkbox").val(["check2","check3"]);
+            /*$(":radio").val(["radio2"]);*/
+            $("[value=radio2]:radio").attr("checked",true);
+        });
+    </script>
+</head>
+<body>
+    <div class="content">
+        <input type="text" id="address" value="请输入邮箱地址"/></br>
+        <input type="text" id="password" value="请输入邮箱密码"/></br>
+        <button>登陆</button>
+    </div>
+    <div class="content2">
+        <select id="single">
+            <option>选择1号</option>
+            <option>选择2号</option>
+            <option>选择3号</option>
+        </select>
+        <select id="multiple" multiple="multiple" style="height:120px;">
+            <option selected="selected">选择1号</option>
+            <option>选择2号</option>
+            <option>选择3号</option>
+            <option>选择4号</option>
+            <option selected="selected">选择5号</option>
+        </select></br>
+        <input type="checkbox" value="check1"/>多选1
+        <input type="checkbox" value="check2"/>多选2
+        <input type="checkbox" value="check3"/>多选3
+        <input type="checkbox" value="check4"/>多选4</br>
+        <input type="radio" value="radio1"/>单选1
+        <input type="radio" value="radio2"/>单选2
+        <input type="radio" value="radio3"/>单选3
+    </div>
+</body>
+</html>

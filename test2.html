@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>练习2:children()</title>
+    <script src="js/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            <!--children()方法只考虑子元素而不考虑其它后代元素-->
+           var $body=$("body").children();
+            var $p=$("p").children();
+            var $ul=$("ul").children();
+            console.log($body.length+"--"+$p.length+"--"+$ul.length);//2--0--3
+           for(var i=0;i<$ul.length;i++){
+               console.log($ul[i].innerHTML);
+           }
+            //next();
+           //var $p1= $("p").next();
+            console.log( $("p").next().html());
+           // alert($("ul").prev());
+            $("p").css("color","red");
+            console.log("p的颜色是："+$("p").css("color"));
+            $("p").css({"font-size":"30px","background-color":"#888888"});
+            /*半透明*/
+            $("p").css("opacity","0.5");
+        });
+    </script>
+</head>
+<body>
+
+    <p title="选择你最喜欢的水果">
+        你最喜欢的水果是？
+    </p>
+<ul>
+    <li title="苹果">苹果</li>
+    <li title="橘子">橘子</li>
+    <li title="菠萝">菠萝</li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>某网站的超链接和图片提示效果</title>
+    <script src="js/jquery.min.js"></script>
+    <style type="text/css">
+        body{
+            margin: 0;
+            padding: 40px;
+            background: #dddddd;
+
+
+        }
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            var x=10;
+            var y=20;
+           $("a.tooltip").mouseover(function (e) {
+              //创建一个div，内容为title属性的值
+               this.myTitle=this.title;
+               this.title="";
+               var tooltip="<div id='tooltip'>"+this.myTitle+"</div>";
+               $("body").append(tooltip);
+
+               $("#tooltip").css({
+                   "top":(e.pageY+y)+'px',
+                   "left":(e.pageX+x)+'px'
+               }).show("fast");
+           }).mouseout(function () {
+               this.title=this.myTitle;
+               $("#tooltip").remove();
+           }).mousemove(function (e) {
+              $("#tooltip").css({
+                  "top":(e.pageY+y)+'px',
+                  "left":(e.pageX+x)+'px'
+              });
+           });
+        });
+    </script>
+</head>
+<body>
+    <p><a href="#" class="tooltip" title="这是我的超链接提示1">提示1</a></p>
+    <p><a href="#" class="tooltip" title="这是我的超链接提示2">提示2</a></p>
+    <p><a href="#"  title="这是自带提示1">自带提示1</a></p>
+    <p><a href="#" title="这是自带提示2">自带提示2</a></p>
+
+</body>
+</html>
